@@ -70,14 +70,25 @@ def stem_sentence(sentence):
     stemmed_sentence = []
     for element in token_words:
         stemmed_sentence.append(porter.stem(element))
-    return " ".join(stemmed_sentence)
+    return " ".join(stemmed_sentence), stemmed_sentence
 
 
 stemmed_piece_of_text = ""
+list_of_all_stems = []
 for sentence in words_list:
     stemmed_sentence = stem_sentence(sentence)
-    stemmed_piece_of_text += stemmed_sentence
+    stemmed_piece_of_text += stemmed_sentence[0]
+    for token in stemmed_sentence[1]:
+        list_of_all_stems.append(token)
 
-print("FINAL")
 print(stemmed_piece_of_text)
+print(list_of_all_stems)
+print("Amount of tokens: ", len(list_of_all_stems))
 
+amount_tokens = len(list_of_all_stems)
+for i in range(0, len(list_of_all_stems)):
+    for k in range(0, i):
+        if list_of_all_stems[i] == list_of_all_stems[k]:
+            amount_tokens -= 1
+            break
+print("Amount of types (unique tokens): ", amount_tokens)
