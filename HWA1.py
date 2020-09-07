@@ -8,3 +8,5 @@ print(porter.stem("trouble"))
 print(porter.stem("troubling"))
 print(porter.stem("troubled"))
 
+print(porter.stem("called"))
+print(porter.stem("call"))
